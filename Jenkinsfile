@@ -16,13 +16,13 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh "./docker-build.sh ${registry} ${imageName}"
+                sh "./scripts/docker-build.sh ${registry} ${imageName}"
             }
         }
 
         stage('Push Image') {
             steps {
-                sh "./docker-push.sh ${registry} ${imageName}"
+                sh "./scripts/docker-push.sh ${registry} ${imageName}"
             }
         }
     }
