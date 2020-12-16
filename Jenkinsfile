@@ -10,6 +10,7 @@ pipeline {
         stage('Checkout Source') {
             steps {
                 git url:'http://github.com/utwoo/jenkins-demo.git', branch: 'develop'
+                sh "chmod 777 -R ./"
             }
         }
 
