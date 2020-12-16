@@ -10,13 +10,14 @@ pipeline {
         stage('Checkout Source') {
             steps {
                 git url:'http://github.com/utwoo/jenkins-demo.git', branch: 'develop'
+                sh "ls -l -R"
                 sh "chmod 777 -R ./"
-                sh "ls -l"
             }
         }
 
         stage('Build Image') {
             steps {
+                sh "ls -l -R"
                 sh "./scripts/docker-build.sh ${registry} ${imageName}"
             }
         }
