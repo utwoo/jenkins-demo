@@ -15,18 +15,13 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh "chmod 777 -R ./"
-                sh "ls -l -R"
-                sh "cd ./scripts"
-                sh "ls -l"
-                sh "pwd"
-                sh "/var/jenkins_home/workspace/pipline-demo/docker-build.sh ${registry} ${imageName}"
+                sh "./docker-build.sh ${registry} ${imageName}"
             }
         }
 
         stage('Push Image') {
             steps {
-                sh "/var/jenkins_home/workspace/pipline-demo/scripts/docker-push.sh ${registry} ${imageName}"
+                sh "./docker-push.sh ${registry} ${imageName}"
             }
         }
     }

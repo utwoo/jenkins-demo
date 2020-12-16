@@ -1,4 +1,4 @@
-#! /bash/bin -e
+#! /bin/bash -e
 
 fn-build() {
     local registry = $1
