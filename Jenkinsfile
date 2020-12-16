@@ -21,7 +21,7 @@ pipeline {
             //     branch('develop')
             // }
             steps {
-                sh "./scripts/docker-build.sh ${registry} ${imageName}"
+                sudo sh "./scripts/docker-build.sh ${registry} ${imageName}"
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
             //     branch('develop')
             // }
             steps {
-                sh "./scripts/docker-push.sh ${registry} ${imageName}"
+                sudo sh "./scripts/docker-push.sh ${registry} ${imageName}"
             }
         }
     }
