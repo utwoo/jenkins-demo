@@ -20,13 +20,13 @@ pipeline {
                 sh "cd ./scripts"
                 sh "ls -l"
                 sh "pwd"
-                sh "./docker-build.sh ${registry} ${imageName}"
+                sh "/var/jenkins_home/workspace/pipline-demo/docker-build.sh ${registry} ${imageName}"
             }
         }
 
         stage('Push Image') {
             steps {
-                sh "./scripts/docker-push.sh ${registry} ${imageName}"
+                sh "/var/jenkins_home/workspace/pipline-demo/scripts/docker-push.sh ${registry} ${imageName}"
             }
         }
     }
