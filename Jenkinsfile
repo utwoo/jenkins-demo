@@ -8,29 +8,20 @@ pipeline {
 
     stages {
         stage('Checkout Source') {
-            // when {
-            //     branch('develop')
-            // }
             steps {
                 git url:'http://github.com/utwoo/jenkins-demo.git', branch: 'develop'
             }
         }
 
         stage('Build Image') {
-            // when {
-            //     branch('develop')
-            // }
             steps {
-                sudo sh "./scripts/docker-build.sh ${registry} ${imageName}"
+                sh "./scripts/docker-build.sh ${registry} ${imageName}"
             }
         }
 
         stage('Push Image') {
-            // when {
-            //     branch('develop')
-            // }
             steps {
-                sudo sh "./scripts/docker-push.sh ${registry} ${imageName}"
+                sh "./scripts/docker-push.sh ${registry} ${imageName}"
             }
         }
     }

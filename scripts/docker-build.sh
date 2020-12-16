@@ -1,7 +1,5 @@
 #! /bash/bin -e
 
-source ./script/_common.sh
-
 fn-build() {
     local registry = $1
     local image_name = $2
