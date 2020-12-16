@@ -19,6 +19,7 @@ pipeline {
                 sh "ls -l -R"
                 sh "cd ./scripts"
                 sh "ls -l"
+                sh "pwd"
                 sh "./docker-build.sh ${registry} ${imageName}"
             }
         }
