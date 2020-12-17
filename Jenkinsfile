@@ -8,27 +8,31 @@ pipeline {
 
     stages {
         stage('Checkout Source') {
+            when { branch('develop') }
             steps {
                 git url:'http://github.com/utwoo/jenkins-demo.git', branch: 'develop'
-                sh "chmod 777 -R ./"
+                sh 'chmod +x -R ./'
             }
         }
 
         stage('Build Image') {
+            when { branch('develop') }
             steps {
                 sh "./scripts/docker-build.sh ${registry} ${imageName}"
             }
         }
 
         stage('Push Image') {
+            when { branch('develop') }
             steps {
                 sh "./scripts/docker-push.sh ${registry} ${imageName}"
             }
         }
 
-         stage('Deloyment') {
+        stage('Deloyment') {
+            when { branch('develop') }
             steps {
-                sh "docker-compose up -d"
+                sh 'docker-compose up -d'
             }
         }
     }
