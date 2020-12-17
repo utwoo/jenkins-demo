@@ -1,6 +1,6 @@
 version: '3'
 services:
   jenkinsdemo:
-    image: "192.168.20.151:5000/utwoo/jenkinsdemo:0.1.6"
+    image: "192.168.20.151:5000/utwoo/jenkinsdemo:0.1.7"
     ports:
     - "8081:80"
