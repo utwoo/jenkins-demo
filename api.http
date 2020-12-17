@@ -1,0 +1,2 @@
+// Registry
+GET http://192.168.20.151:5000/v2/utwoo/jenkinsdemo/tags/list

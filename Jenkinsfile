@@ -25,5 +25,11 @@ pipeline {
                 sh "./scripts/docker-push.sh ${registry} ${imageName}"
             }
         }
+
+         stage('Deloyment') {
+            steps {
+                sh "./docker-compose up -d"
+            }
+        }
     }
 }
