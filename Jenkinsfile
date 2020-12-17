@@ -36,17 +36,17 @@ pipeline {
             }
         }
 
-        stage('Deployment Release') {
-            when { tag('release/*') }
-            steps {
-                sh 'docker-compose -f ./docker-compose.release.yaml up -d'
-            }
-        }
-
         stage('Deployment PROD') {
             when { branch('main') }
             steps {
                 sh 'docker-compose -f ./docker-compose.product.yaml up -d'
+            }
+        }
+
+        stage('Deployment Release') {
+            when { tag('release/*') }
+            steps {
+                sh 'docker-compose -f ./docker-compose.release.yaml up -d'
             }
         }
     }
