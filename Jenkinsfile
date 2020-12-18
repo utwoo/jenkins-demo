@@ -7,6 +7,17 @@ pipeline {
     agent any
 
     stages {
+        stage('Checking feature branch') {
+            when { branch('develop') }
+            stages {
+                stage('Check CHANGELOG.md includes ticket reference') {
+                    steps {
+                        sh './scripts/pipeline/check-changelog-ticket.sh'
+                    }
+                }
+            }
+        }
+
         stage('Checkout Source') {
             when { branch('develop') }
             steps {
