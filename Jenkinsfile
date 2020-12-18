@@ -7,6 +7,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout Source') {
+            when { branch('develop') }
+            steps {
+                git url:'http://github.com/utwoo/jenkins-demo.git', branch: 'develop'
+                sh 'chmod +x -R ./'
+            }
+        }
+
         stage('Checking feature branch') {
             when { branch('develop') }
             stages {
@@ -15,14 +23,6 @@ pipeline {
                         sh './scripts/pipeline/check-changelog-ticket.sh'
                     }
                 }
-            }
-        }
-
-        stage('Checkout Source') {
-            when { branch('develop') }
-            steps {
-                git url:'http://github.com/utwoo/jenkins-demo.git', branch: 'develop'
-                sh 'chmod +x -R ./'
             }
         }
 
